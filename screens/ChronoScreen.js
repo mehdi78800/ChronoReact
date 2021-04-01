@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, View, Text, TouchableOpacity } from 'react-native';
-import { useDispatch, useSelector, useEffect } from 'react-redux';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import { launchChrono, startChrono, stopChrono, resetChrono, saveChrono } from '../actions/actions-types';
 import Chrono from "../components/Chrono";
+import Styles from '../Styles/styles';
 
 const ChronoScreen = () => {
 
@@ -28,38 +29,62 @@ const ChronoScreen = () => {
 
 
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
-            <View style={{ flexDirection: 'row' }}>
-
-                <Button
-                    title="Start"
-                    onPress={() => dispatch(launchChrono())}
-                />
-
-                <Button
-                    title="Stop"
-                    onPress={() => dispatch(stopChrono())}
-                />
-
-                <Button
-                    title="Reset"
-                    onPress={() => dispatch(resetChrono())}
-                />
-
-                <Button
-                    title="Save"
-                    onPress={() => dispatch(saveChrono())}
-                />
-
-            </View>
-
+        <View style={[Styles.home, Styles.center]}>
+            
             <Chrono
                 h={h}
                 m={m}
                 s={s}
             />
+            
+            <View style={{ flexDirection: 'row' }}>
+
+                <TouchableOpacity
+                    style={[Styles.btn, Styles.start]}
+                    onPress={() => dispatch(launchChrono())}
+                >
+                    <Text
+                        style={Styles.txt}>
+                        Start
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={[Styles.btn, Styles.stop]}
+                    onPress={() => dispatch(stopChrono())}
+                >
+                    <Text
+                        style={Styles.txt}>
+                        Stop
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={[Styles.btn, Styles.stop]}
+                    onPress={() => dispatch(resetChrono())}
+                >
+                    <Text
+                        style={Styles.txt}>
+                        Reset
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={[Styles.btn, Styles.start]}
+                    onPress={() => dispatch(saveChrono())}
+                >
+                    <Text
+                        style={Styles.txt}>
+                        Save
+                    </Text>
+                </TouchableOpacity>
+
+            </View>
+
         </View>
     );
 }
+
+
 
 export default ChronoScreen;

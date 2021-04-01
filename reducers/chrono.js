@@ -1,4 +1,4 @@
-import { LAUNCH, START, STOP, RESET, SAVE } from '../constants/actions';
+import { LAUNCH, START, STOP, RESET, SAVE, RESET_SAVES } from '../constants/actions';
 
 
 const initialState = {
@@ -61,6 +61,12 @@ const reducerChrono = (state = initialState, action = {}) => {
                 statut: false
             }
 
+        case RESET_SAVES:
+            return {
+                ...state,
+                times: []
+            }
+
         case RESET:
             return {
                 ...state,
@@ -73,12 +79,11 @@ const reducerChrono = (state = initialState, action = {}) => {
         case SAVE:
 
             if (!statut) {
-                console.log("on peut save");
                 return {
                     ...state,
-                    times: times.concat(h+'h '+m+'m '+ s+'s') 
+                    times: times.concat(h + 'h ' + m + 'm ' + s + 's')
                 }
-            }else{
+            } else {
                 return {
                     ...state,
                 }

@@ -1,4 +1,4 @@
-import { LAUNCH, START, STOP, RESET, SAVE } from '../constants/actions';
+import { LAUNCH, START, STOP, RESET, SAVE , RESET_SAVES} from '../constants/actions';
 
 export const launchChrono = () => {
     return {
@@ -27,5 +27,11 @@ export const resetChrono = () => {
 export const saveChrono = () => {
     return {
         type: SAVE
+    }
+}
+
+export const resetSaves = () => {
+    return {
+        type: RESET_SAVES
     }
 }
