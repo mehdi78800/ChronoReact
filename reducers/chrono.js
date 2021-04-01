@@ -74,9 +74,14 @@ const reducerChrono = (state = initialState, action = {}) => {
 
             if (!statut) {
                 console.log("on peut save");
-            }
-            return {
-                ...state,
+                return {
+                    ...state,
+                    times: times.concat(h+'h '+m+'m '+ s+'s') 
+                }
+            }else{
+                return {
+                    ...state,
+                }
             }
 
         default:
